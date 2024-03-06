@@ -44,7 +44,7 @@ DELIMITER ;
 
 SELECT P_ID, last_name, personal_healthcare_cost(Healthcare_expenses, healthcare_coverage) AS patient_cost
 FROM patients;
--- success
+
 
 -- query:list patients who spent more than 50000 on there health
 SELECT P_ID, first_name, last_name, healthcare_expenses
@@ -136,7 +136,7 @@ SUM(DATEDIFF(stop_date, start_date)) as careplan_duration_days
 FROM careplans 
 GROUP BY P_ID, description
 ORDER BY SUM(DATEDIFF(stop_date, start_date)) DESC;
--- success
+
 
 
 -- Create a view that uses at least 3-4 base tables; prepare and demonstrate a query that uses the 
