@@ -13,3 +13,5 @@ Other queries demonstrated:
 -Calculation of outstanding patient cost
 
 Please read mySQL code for more details.
+
+This project was a team collaboration and was done under the instruction of Code First Girls.
