@@ -38,7 +38,7 @@ BEGIN
 END //
 DELIMITER ;
 
-DROP FUNCTION personal_healthcare_cost;
+
 
 -- call function for every patient 
 
@@ -54,7 +54,7 @@ WHERE P_ID IN (
     FROM Patients
     WHERE healthcare_expenses > 50000
 );
--- success
+
 
 -- 	 create a stored procedure and demonstrate how it runs
 -- All patients by a specific race to understand patient demographics
@@ -77,7 +77,7 @@ CALL PatientsByRace('white');
 CALL PatientsByRace('asian');
 
 USE hospital;
--- create an trigger and demonstrate how it runs (when event happens do something)
+-- create an trigger and demonstrate how it runs (when event happens do something) this trigger adds a new patient data across every table
 
 DELIMITER //
 
@@ -93,10 +93,11 @@ DELIMITER ;
 
 -- how the trigger works:
 
--- Performed already INSERT INTO patients (P_ID, first_name, last_name, race, birth_date)
--- VALUES ('85G2F', 'Jane', 'Doe', 'white', '1989-01-01');
+INSERT INTO patients (P_ID, first_name, last_name, race, birth_date)
+VALUES ('85G2F', 'Jane', 'Doe', 'white', '1989-01-01');
 
--- Demonstrate this:
+
+-- Demonstrate again this:
 INSERT INTO patients (P_ID, first_name, last_name, race, birth_date)
 VALUES ('89HJ9', 'Gabby', 'Douglas', 'black', '1995-31-12');
 
@@ -122,15 +123,11 @@ BEGIN
 END //
 
 SHOW CREATE EVENT update_careplan_status;
--- success 
+
 
 -- Prepare an example query with group by 
--- and having to demonstrate how to extract data from your DB for analysis 
---  duration of care plans for each patient
-
-UPDATE careplans
-SET stop_date = '1999-01-26'
-WHERE P_ID = '1D396';
+--  to demonstrate how to extract data from your DB for analysis:
+--  query shows duration of care plans for each patient from most days spent in descending order
 
 SELECT 
 P_ID, 
@@ -165,7 +162,6 @@ INNER JOIN
     careplans ON patients.P_ID = careplans.P_ID;
 
 SELECT * FROM careplan_protocol;
--- success
 
 
 
